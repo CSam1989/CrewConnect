@@ -1,6 +1,7 @@
 -- Bootstrap
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 CREATE EXTENSION IF NOT EXISTS btree_gist;  -- for exclusion constraints on ranges (kept for compatibility)
+CREATE EXTENSION IF NOT EXISTS citext;
 
 -- Types (Enums)
 DO $$
@@ -41,11 +42,13 @@ CREATE TABLE IF NOT EXISTS app_group (
   currency    char(3) NOT NULL DEFAULT 'USD',
   is_active   boolean NOT NULL DEFAULT true,
   created_at  timestamptz NOT NULL DEFAULT now(),
-  updated_at  timestamptz NOT NULL DEFAULT now(),
-  UNIQUE (lower(name))
+  updated_at  timestamptz NOT NULL DEFAULT now()
+  -- unique lower(name) enforced via expression index
 );
 CREATE TRIGGER app_group_set_updated_at BEFORE UPDATE ON app_group
 FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+CREATE UNIQUE INDEX IF NOT EXISTS uq_app_group_lower_name
+  ON app_group (lower(name));
 
 -- Auth users
 -- login_user:
@@ -97,12 +100,14 @@ CREATE TABLE IF NOT EXISTS family (
   name        text NOT NULL,
   is_active   boolean NOT NULL DEFAULT true,
   created_at  timestamptz NOT NULL DEFAULT now(),
-  updated_at  timestamptz NOT NULL DEFAULT now(),
-  UNIQUE (group_id, lower(name))
+  updated_at  timestamptz NOT NULL DEFAULT now()
+  -- unique (group_id, lower(name)) enforced via expression index
 );
 CREATE INDEX IF NOT EXISTS ix_family_group ON family(group_id);
 CREATE TRIGGER family_set_updated_at BEFORE UPDATE ON family
 FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+CREATE UNIQUE INDEX IF NOT EXISTS uq_family_group_lower_name
+  ON family (group_id, lower(name));
 
 -- Persons
 -- person:
@@ -128,9 +133,25 @@ CREATE TABLE IF NOT EXISTS user_person_link (
 );
 
 -- Ensure family_admin assignments reference a family and implicitly its group
-ALTER TABLE IF EXISTS user_role_assignment
-  ADD CONSTRAINT IF NOT EXISTS ura_family_fk
-  FOREIGN KEY (family_id) REFERENCES family(id) ON DELETE CASCADE;
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1
+    FROM pg_class t
+    WHERE t.relname = 'user_role_assignment'
+  ) THEN
+    IF NOT EXISTS (
+      SELECT 1
+      FROM pg_constraint c
+      JOIN pg_class t ON t.oid = c.conrelid
+      WHERE t.relname = 'user_role_assignment' AND c.conname = 'ura_family_fk'
+    ) THEN
+      ALTER TABLE user_role_assignment
+        ADD CONSTRAINT ura_family_fk
+        FOREIGN KEY (family_id) REFERENCES family(id) ON DELETE CASCADE;
+    END IF;
+  END IF;
+END$$;
 
 -- Valid factors catalog
 -- valid_factor:
