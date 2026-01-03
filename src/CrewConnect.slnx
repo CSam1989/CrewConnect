@@ -1,5 +1,8 @@
 <Solution>
   <Project Path="CrewConnect.AppHost/CrewConnect.AppHost.csproj" />
+  <Project Path="CrewConnect.Application/CrewConnect.Application.csproj" />
+  <Project Path="CrewConnect.Domain/CrewConnect.Domain.csproj" />
+  <Project Path="CrewConnect.Infrastructure/CrewConnect.Infrastructure.csproj" />
   <Project Path="CrewConnect.ServiceDefaults/CrewConnect.ServiceDefaults.csproj" />
   <Project Path="CrewConnect.Web/CrewConnect.Web.Client/CrewConnect.Web.Client.csproj" />
   <Project Path="CrewConnect.Web/CrewConnect.Web/CrewConnect.Web.csproj" />

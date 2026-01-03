@@ -10,6 +10,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\CrewConnect.ServiceDefaults\CrewConnect.ServiceDefaults.csproj" />
     <ProjectReference Include="..\CrewConnect.Web.Client\CrewConnect.Web.Client.csproj" />
+    <!-- add clean architecture references -->
+    <ProjectReference Include="..\..\CrewConnect.Application\CrewConnect.Application.csproj" />
+    <ProjectReference Include="..\..\CrewConnect.Infrastructure\CrewConnect.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\CrewConnect.Domain\CrewConnect.Domain.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.1" />
   </ItemGroup>
 
