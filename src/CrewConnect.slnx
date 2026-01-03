@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CrewConnect.AppHost/CrewConnect.AppHost.csproj" />
+  <Project Path="CrewConnect.ServiceDefaults/CrewConnect.ServiceDefaults.csproj" />
+  <Project Path="CrewConnect.Web/CrewConnect.Web.Client/CrewConnect.Web.Client.csproj" />
+  <Project Path="CrewConnect.Web/CrewConnect.Web/CrewConnect.Web.csproj" />
+</Solution>
