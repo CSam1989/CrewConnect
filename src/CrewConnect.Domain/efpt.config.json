@@ -1,0 +1,117 @@
+﻿{
+   "CodeGenerationMode": 6,
+   "ContextClassName": "crew_connect_dbContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "IrregularWords": null,
+   "MinimumProductVersion": "2.6.1248",
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PluralRules": null,
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "CrewConnect.Domain",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 2,
+   "SingularRules": null,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "public.activity",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.app_group",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.expense",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.expense_family_target",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.expense_person_target",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.family",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.login_user",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.payment",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.person",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.person_factor",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.role_definition",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.settlement_expense_allocation",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.settlement_line",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.settlement_run",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.user_person_link",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.user_role_assignment",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.valid_factor",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false
+}
