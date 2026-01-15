@@ -1,5 +1,6 @@
 using CrewConnect.Web.Client.Pages;
 using CrewConnect.Web.Components;
+using CrewConnect.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
+
+// Configure Infrastructure services (Database)
+builder.Services.ConfigureDatabase(builder.Configuration);
 
 var app = builder.Build();
 

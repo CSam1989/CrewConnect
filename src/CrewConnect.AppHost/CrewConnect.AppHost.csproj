@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CrewConnect.Web\CrewConnect.Web\CrewConnect.Web.csproj" />
+    <ProjectReference Include="..\CrewConnect.Infrastructure\CrewConnect.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
