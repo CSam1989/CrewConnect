@@ -1,0 +1,15 @@
+@inject NavigationManager Navigation
+
+@code {
+    protected override void OnInitialized()
+    {
+        var relativeReturnUrl = Navigation.ToBaseRelativePath(Navigation.Uri);
+
+        if (string.IsNullOrEmpty(relativeReturnUrl))
+        {
+            relativeReturnUrl = "/";
+        }
+
+        Navigation.NavigateTo($"/authentication/login?returnUrl={Uri.EscapeDataString(relativeReturnUrl)}", forceLoad: true);
+    }
+}

@@ -1,0 +1,14 @@
+@using Microsoft.AspNetCore.Components.Authorization
+
+<AuthorizeView>
+    <Authorized>
+        <span class="me-2">Hello, @context.User.Identity?.Name</span>
+        <form method="post" action="/authentication/logout">
+            <AntiforgeryToken />
+            <button type="submit" class="btn btn-link nav-link py-0">Log out</button>
+        </form>
+    </Authorized>
+    <NotAuthorized>
+        <a href="/authentication/login" class="nav-link">Log in</a>
+    </NotAuthorized>
+</AuthorizeView>
